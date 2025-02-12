@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework.authtoken",
     "dj_rest_auth",
+    "drf_spectacular",
 ]
 
 REST_FRAMEWORK = {
@@ -54,6 +55,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 MIDDLEWARE = [
@@ -148,3 +150,13 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# spectaculardrf settings
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Django Blog API",
+    "DESCRIPTION": "API for Django API Blog",
+    "VERSION": "0.0.1",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SCHEMA_PATH_PREFIX": "/api/v1/",
+}
+

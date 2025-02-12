@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView
 
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('api/v1/', include('posts.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),
 ]
