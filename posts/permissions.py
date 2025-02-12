@@ -1,8 +1,8 @@
-from rest_framework import permissions
+from rest_framework import permissions 
 
-class IsAuthorizedOrReadOnly(permissions.BasePermission):
+class IsAuthorOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
-        # Authenticated users only can see the posts 
+        # Authenticated users only can see list of posts
         if request.user.is_authenticated:
             return True
         return False
@@ -11,5 +11,8 @@ class IsAuthorizedOrReadOnly(permissions.BasePermission):
         # Read permissions are allowed to any request
         if request.method in permissions.SAFE_METHODS:
             return True
-        # Write permissions are only allowed to the author of a post
+        
+        # Write permissions are only allowed to the author of the post
         return obj.author == request.user
+    
+    
